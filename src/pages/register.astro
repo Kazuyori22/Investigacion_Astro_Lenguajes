@@ -1,0 +1,33 @@
+---
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; background: #8e44ad; color: white; }
+        .container { width: 300px; margin: auto; padding: 20px; background: rgba(0,0,0,0.7); margin-top: 100px; border-radius: 10px; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; }
+        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; transition: 0.3s; }
+        .btn-register { background: #e67e22; color: white; }
+        .btn-back { background: #e74c3c; color: white; }
+        button:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrarse</h2>
+        <form>
+            <input type="text" placeholder="Nombre Completo" required>
+            <input type="email" placeholder="Correo Electrónico" required>
+            <input type="password" placeholder="Contraseña" required>
+            <input type="password" placeholder="Confirmar Contraseña" required>
+            <input type="date" required>
+            <button type="submit" class="btn-register">Registrarse</button>
+        </form>
+        <a href="/"><button class="btn-back">Regresar a Inicio</button></a>
+    </div>
+</body>
+</html>
