@@ -1,31 +1,177 @@
 ---
+import FormsBlogs from "../components/FormsBlogs.astro";
+import BlogLayout from "../layouts/BlogLayout.astro";
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mi Blog - Landing Page</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; background: linear-gradient(135deg, #1a2a6c, #3e5fb2, #7273cb); color: white; }
-        header { padding: 20px; font-size: 24px; font-weight: bold; }
-        .hero { padding: 50px; }
-        .buttons { margin-top: 20px; }
-        .btn { padding: 10px 20px; font-size: 18px; border: none; cursor: pointer; margin: 10px; border-radius: 5px; transition: 0.3s; }
-        .btn-login { background: #ff5722; color: white; }
-        .btn-register { background: #4caf50; color: white; }
-        .btn:hover { opacity: 0.8; }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background: linear-gradient(135deg, #1a2a6c, #3e5fb2, #7273cb);
+        color: white;
+      }
+      header {
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .hero {
+        padding: 50px;
+      }
+      .buttons {
+        margin-top: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+        border-radius: 5px;
+        transition: 0.3s;
+      }
+      .btn-login {
+        background: #ff5722;
+        color: white;
+      }
+      .btn-register {
+        background: #4caf50;
+        color: white;
+      }
+      .btn:hover {
+        opacity: 0.8;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>Mi Blog</header>
     <section class="hero">
-        <h1>Bienvenido a Mi Blog</h1>
-        <p>Explora contenido interesante y mantente informado.</p>
-        <div class="buttons">
-            <a href="/login"><button class="btn btn-login">Iniciar Sesión</button></a>
-            <a href="/register"><button class="btn btn-register">Registrarse</button></a>
-        </div>
+      <h1>Bienvenido a Mi Blog</h1>
+      <p>Explora contenido interesante y mantente informado.</p>
+      <div class="buttons">
+        <a href="/login"
+          ><button class="btn btn-login">Iniciar Sesión</button></a
+        >
+        <a href="/register"
+          ><button class="btn btn-register">Registrarse</button></a
+        >
+      </div>
+      <FormsBlogs />
+      <BlogLayout />
+      <!-- Video de fondo -->
+      <video autoplay muted loop id="background-video">
+        <source src="/assets/fondo.mp4" type="video/mp4" />
+        Tu navegador no soporta el formato de video.
+      </video>
+
+      <!-- El contenido del blog -->
+      <!-- <div class="blogs-container"> -->
+      <!-- Aquí iría el contenido de tus blogs -->
     </section>
-</body>
+  </body>
 </html>
+<style>
+  /* Fondo de video */
+  #background-video {
+    position: fixed; /* Fija el video en el fondo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa todo el alto */
+    object-fit: cover; /* Asegura que cubra toda la pantalla sin distorsión */
+    z-index: -1; /* Asegura que el video esté detrás del contenido */
+  }
+
+  /* Fondo oscuro para el contenido */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    color: white;
+  }
+
+  /* Contenedor principal */
+  .blogs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  /* Estilo de las tarjetas */
+  .blog-card {
+    position: relative;
+    height: 350px;
+    background-size: cover !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition:
+      transform 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Efecto hover en las tarjetas */
+  .blog-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Overlay con degradado */
+  .blog-card .overlay {
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+    width: 100%;
+    backdrop-filter: blur(5px);
+  }
+
+  /* Estilo del título del blog */
+  .blog-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  /* Estilo de etiquetas */
+  .blog-card .tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .blog-card .tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  /* Colores para etiquetas según categoría */
+  .blog-card .tag.aerospace {
+    background: #ff3b3b;
+  }
+  .blog-card .tag.cosmology {
+    background: #ff8800;
+  }
+  .blog-card .tag.javascript {
+    background: #ffdd00;
+  }
+</style>

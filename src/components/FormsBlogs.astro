@@ -1,0 +1,196 @@
+<form class="blog-form" id="blogForm">
+  <input type="text" id="title" placeholder="Titulo del blog" required />
+  <textarea id="content" placeholder="Contenido del blog" rows="4" required
+  ></textarea>
+
+  <!-- Sección de selección de imagen -->
+
+  <div class="image-selection">
+    <label for="imageSelect">Selecciona una imagen:</label>
+    <div class="image-buttons">
+      <button type="button" class="image-button" data-image="../assets/1.png">
+        <span
+          class="image-option"
+          style="background-image: url('../assets/1.png');"></span>
+      </button>
+      <button type="button" class="image-button" data-image="../assets/2.png">
+        <span
+          class="image-option"
+          style="background-image: url('../assets/2.png');"></span>
+      </button>
+      <button type="button" class="image-button" data-image="../assets/3.png">
+        <span
+          class="image-option"
+          style="background-image: url('../assets/3.png');"></span>
+      </button>
+      <button type="button" class="image-button" data-image="../assets/4.png">
+        <span
+          class="image-option"
+          style="background-image: url('../assets/4.png');"></span>
+      </button>
+    </div>
+    <!-- Imagen previa seleccionada -->
+    <div id="imagePreview" class="image-preview">
+      <img
+        src=""
+        alt="Vista previa"
+        id="previewImage"
+        style="width: 100%; height: auto;"
+      />
+    </div>
+  </div>
+
+  <button type="submit">Publicar Blog</button>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("blogForm") as HTMLFormElement;
+
+    if (form) {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const titleElement = document.getElementById(
+          "title"
+        ) as HTMLInputElement | null;
+        const contentElement = document.getElementById(
+          "content"
+        ) as HTMLTextAreaElement | null;
+        const imageSelectElement = document.querySelector(
+          ".image-button.selected"
+        ) as HTMLElement | null;
+
+        if (titleElement && contentElement && imageSelectElement) {
+          const title = titleElement.value;
+          const content = contentElement.value;
+          const imageUrl = imageSelectElement.getAttribute("data-image") || "";
+
+          const blog = {
+            title,
+            content,
+            date: new Date().toISOString(),
+            image: imageUrl,
+          };
+
+          // Recuperar blogs existentes o inicializar un array vacío
+          const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+          blogs.push(blog);
+
+          // Guardar blogs actualizados en localStorage
+          localStorage.setItem("blogs", JSON.stringify(blogs));
+
+          // Limpiar el formulario
+          form.reset();
+
+          // Emitir evento para actualizar otros componentes
+          document.dispatchEvent(
+            new CustomEvent("blogAdded", { detail: blog })
+          );
+        } else {
+          console.error("Formulario o elementos necesarios no encontrados.");
+        }
+      });
+    } else {
+      console.error("No se encontró el formulario con id 'blogForm'");
+    }
+
+    const imageButtons = document.querySelectorAll(".image-button");
+    const previewImage = document.getElementById(
+      "previewImage"
+    ) as HTMLImageElement | null;
+
+    if (previewImage) {
+      imageButtons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const selectedImage = button.getAttribute("data-image");
+          if (selectedImage && previewImage) {
+            previewImage.src = selectedImage;
+          }
+
+          // Resaltar el botón seleccionado
+          imageButtons.forEach((btn) => btn.classList.remove("selected"));
+          button.classList.add("selected");
+        });
+      });
+    }
+  });
+</script>
+
+<style>
+  .blog-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .blog-form input,
+  .blog-form textarea,
+  .blog-form select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .blog-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(161, 119, 240);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .image-selection {
+    margin-bottom: 10px;
+  }
+
+  .image-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .image-button {
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 60px; /* Ajuste el tamaño del botón */
+    height: 60px;
+    border: none;
+    outline: none;
+  }
+
+  .image-option {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+  }
+
+  .image-button.selected {
+    border: none;
+  }
+
+  .image-preview img {
+    width: 100%;
+    height: auto;
+  }
+  /* Estilo para el label */
+  .image-selection label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+const url = new URL(Astro.request.url);
+const title = url.searchParams.get("title");
+---
+
+<head>
+  <script>
+    interface Blog {
+      title: string;
+      content: string;
+      date: string;
+      image: string;
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const title = params.get("title");
+      const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+      const blog = blogs.find((b: Blog) => b.title === title);
+
+      // Obtener elementos una sola vez
+      const blogTitle = document.getElementById("blog-title");
+      const blogImage = document.getElementById("blog-image");
+      const blogContent = document.getElementById("blog-content");
+
+      if (!blog) {
+        if (blogContent) blogContent.innerHTML = "<h2>Blog no encontrado</h2>";
+        return;
+      }
+
+      if (blogTitle) blogTitle.innerText = blog.title;
+      if (blogImage && blog.image)
+        blogImage.setAttribute("src", `/assets/${blog.image}`);
+      if (blogContent) blogContent.innerHTML = `<p>${blog.content}</p>`;
+    });
+  </script>
+</head>
+
+<article class="blog-page">
+  <h1 id="blog-title"></h1>
+  <img id="blog-image" src="" alt="" width="100" height="100" />
+  <div id="blog-content"></div>
+</article>
+
+<style>
+  .blog-page {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+</style>

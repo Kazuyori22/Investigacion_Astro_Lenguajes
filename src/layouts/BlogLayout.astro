@@ -1,0 +1,113 @@
+---
+
+---
+
+<head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+      const container = document.getElementById("blogsContainer");
+
+      if (container && Array.isArray(blogs)) {
+        container.innerHTML = blogs
+          .map(
+            (blog) => `
+             <a href="/blog?title=${encodeURIComponent(blog.title)}" class="blog-card"
+     style="
+       background-image: url('${blog.image ? `/assets/${blog.image}` : ""}');
+       position: relative;
+       height: 300px;
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+       border-radius: 15px;
+       overflow: hidden;
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-end;
+       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+       cursor: pointer;
+     ">
+    <div class="overlay" style="
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+        width: 100%;
+        backdrop-filter: blur(5px);
+        text-align: left;
+        display: flex;
+        justify-content: flex-start; /* Cambiado a flex-start */
+        align-items: flex-end;
+     ">
+      <h3 style="margin: 5px; font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);">
+        ${blog.title}
+      </h3>
+    </div>
+  </a>
+        `
+          )
+          .join("");
+      }
+    });
+  </script>
+</head>
+
+<div class="blogs-container" id="blogsContainer"></div>
+
+<style>
+  .blogs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .blog-card {
+    position: relative;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    transition:
+      transform 0.3s ease-in-out,
+      box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .blog-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+  }
+
+  .blog-card[data-background] {
+    background-image: url(attr(data-background));
+  }
+
+  .overlay {
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+    width: 100%;
+    backdrop-filter: blur(5px);
+    text-align: left;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .overlay h3 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  }
+</style>

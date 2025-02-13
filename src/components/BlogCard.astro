@@ -1,0 +1,44 @@
+---
+const { title, image } = Astro.props;
+---
+
+<a
+  href={`/blog?title=${encodeURIComponent(title)}`}
+  class="blog-card"
+  style="
+    background-image: url('${image ? `/assets/${image}` : ''}');
+    position: relative;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  "
+>
+  <div
+    class="overlay"
+    style="
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+      width: 100%;
+      backdrop-filter: blur(5px);
+      text-align: left;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    "
+  >
+    <h3
+      style="margin: 10px 0; font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);"
+    >
+      {title}
+    </h3>
+  </div>
+</a>
