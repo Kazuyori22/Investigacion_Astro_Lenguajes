@@ -1,0 +1,77 @@
+---
+export let title = "Mi Blog";
+---
+
+<header class="fixed top-0 left-0 w-full bg-black bg-opacity-70 backdrop-blur-md text-white py-4 border-b-2 border-white shadow-lg z-50">
+  <div class="container mx-auto flex items-center justify-between px-8">
+
+    <!-- Logo y Título -->
+    <div class="flex items-center space-x-4">
+      <img src="/logo.png" alt="Logo" class="h-12 w-12 rounded-full">
+      <h1 class="text-2xl font-semibold tracking-wide">{ title }</h1>
+    </div>
+
+    <!-- Menú de navegación -->
+    <nav>
+      <ul class="flex gap-6 text-lg font-medium">
+        <li><a href="#" class="hover:text-blue-400 transition duration-300">Inicio</a></li>
+        <li><a href="#" class="hover:text-blue-400 transition duration-300">About Us</a></li>
+        <li><a href="#" class="hover:text-blue-400 transition duration-300">Community</a></li>
+        <li><a href="#" class="hover:text-blue-400 transition duration-300">Contacto</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<style>
+  /* Asegurar que el header se vea bien alineado horizontalmente */
+  header {
+    background: rgba(0, 0, 0, 0.8); /* Fondo oscuro con más opacidad */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  /* Espaciado adecuado entre los elementos */
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Animación para la entrada del header */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Ajustar el tamaño y apariencia de los enlaces del menú */
+  nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav li {
+    display: inline-block;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #4f9cf9;
+  }
+</style>

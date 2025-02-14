@@ -1,0 +1,30 @@
+<footer class="bg-gray-800 text-gray-300 py-3 mt-12 text-sm">
+  <div class="container mx-auto text-center">
+    <p class="text-xs">&copy; 2024 Mi Blog. Todos los derechos reservados.</p>
+    <div class="mt-2 space-x-3">
+      <a href="#" class="hover:text-white transition duration-300">Términos</a>
+      <span class="text-gray-500">|</span>
+      <a href="#" class="hover:text-white transition duration-300">Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* Reducir el tamaño y mejorar el diseño del footer */
+footer {
+  font-size: 0.8rem; /* Letra más pequeña */
+  padding: 8px 0; /* Reducir el padding vertical */
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Espaciado uniforme en los enlaces */
+footer a {
+  text-decoration: none;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
