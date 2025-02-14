@@ -1,0 +1,69 @@
+---
+title: "Sobre Nosotros - Comunidad";
+layout: "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/index.css";
+import "../styles/backgroundVideo.css";
+---
+
+<Header />
+<html>
+  <head>
+    <title>Sobre la Comunidad de My SpaceBlogs</title>
+  </head>
+
+  <body>
+    <main>
+      <section class="hero">
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">
+          Sobre la Comunidad de My SpaceBlogs
+        </h1>
+        <p class="text-lg text-gray-600 mb-4">
+          En My SpaceBlogs, creemos en el poder de la comunidad. Nuestra
+          plataforma está diseñada para conectar a escritores, lectores y
+          entusiastas de diversos temas, ofreciendo un lugar donde cada voz
+          pueda ser escuchada y apreciada.
+        </p>
+        <p class="text-lg text-gray-600 mb-4">
+          Ya sea que seas un escritor experimentado o alguien que quiera
+          compartir su perspectiva única, aquí encontrarás un espacio inclusivo,
+          colaborativo y respetuoso donde puedes expresarte y aprender de los
+          demás.
+        </p>
+        <p class="text-lg text-gray-600 mb-4">
+          La comunidad de My SpaceBlogs abarca una amplia gama de intereses:
+          desde tecnología, arte, ciencia, hasta estilo de vida y más. Todos
+          tenemos algo valioso que aportar y la diversidad de ideas es lo que
+          hace que esta comunidad sea única.
+        </p>
+        <div class="mt-6">
+          <h2 class="text-2xl font-semibold text-gray-700">¿Por qué unirse?</h2>
+          <p class="text-gray-600 mt-2">
+            Unirte a nuestra comunidad te brinda la oportunidad de compartir tus
+            pensamientos, mejorar tus habilidades de escritura, y conectar con
+            personas que comparten tus pasiones. No solo publicamos blogs, sino
+            que también fomentamos el intercambio de ideas a través de
+            comentarios, discusiones y colaboraciones.
+          </p>
+        </div>
+        <div class="mt-6">
+          <h2 class="text-2xl font-semibold text-gray-700">
+            Cultura de la Comunidad
+          </h2>
+          <p class="text-gray-600 mt-2">
+            Nuestra cultura está basada en el respeto, la empatía y el apoyo
+            mutuo. Fomentamos un ambiente positivo donde todos los miembros
+            puedan sentirse cómodos para compartir y recibir retroalimentación
+            constructiva.
+          </p>
+        </div>
+        <video autoplay muted loop id="background-video">
+          <source src="/assets/fondo4.mp4" type="video/mp4" />
+          Tu navegador no soporta el formato de video.
+        </video>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
