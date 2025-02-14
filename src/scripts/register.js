@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Usuarios guardados en localStorage:", usuarios);
 
 
-        alert("Registro exitoso.");
+         window.location.href = "/gracias";
         form.reset(); // Limpiar el formulario
     });
 });

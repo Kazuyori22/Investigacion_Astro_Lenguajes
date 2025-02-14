@@ -1,0 +1,26 @@
+---
+import Agradecimiento from "../components/Agradecimiento.astro";
+
+// Puedes pasar el mensaje aquí
+const mensaje = "Gracias por registrarte en SpaceBlog!";
+const contenido =
+  "Espero que tengas una exelente experiencia de usuario en nuestro sitio";
+---
+
+<Agradecimiento mensaje={mensaje} content={contenido} />
+
+<video autoplay muted loop id="background-video">
+  <source src="/assets/fondo4.mp4" type="video/mp4" />
+  Tu navegador no soporta el formato de video.
+</video>
+<style>
+  #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+</style>
