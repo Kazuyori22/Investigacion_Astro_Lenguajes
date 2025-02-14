@@ -1,127 +1,28 @@
 ---
-
+import "../styles/blog.css"; // Importar el archivo CSS
 ---
 
-<head>
-  <script>
-    interface Blog {
-      id:string,
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Blog</title>
+  </head>
+  <body>
+    <video autoplay muted loop id="background-video">
+      <source src="/assets/fondo4.mp4" type="video/mp4" />
+      Tu navegador no soporta el formato de video.
+    </video>
 
-      title: string;
-      content: string;
-      date: string;
-      image: string;
-    }
-    document.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const id= params.get("id");
-      const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-      const blog = blogs.find((b: Blog) => b.id === id);
+    <div class="blog-container">
+      <article class="blog-page">
+        <h1 id="blog-title"></h1>
+        <img id="blog-image" src="" alt="" />
+        <div id="blog-content"></div>
+      </article>
+    </div>
 
-      // Obtener elementos una sola vez
-      const blogTitle = document.getElementById("blog-title");
-      const blogImage = document.getElementById("blog-image");
-      const blogContent = document.getElementById("blog-content");
-
-      if (!blog) {
-        if (blogContent) {
-          const notFoundMessage = document.createElement("h2");
-          notFoundMessage.textContent = "Blog no encontrado";
-          blogContent.appendChild(notFoundMessage);
-        }
-        return;
-      }
-
-      if (blogTitle) blogTitle.textContent = blog.title;
-      if (blogImage && blog.image)
-        blogImage.setAttribute("src", `/assets/${blog.image}`);
-      if (blogContent) {
-        blogContent.innerHTML = ""; // Limpiar contenido previo
-        const user = document.createElement("p");
-        user.textContent = `Usuario: ${blog.user}`;
-        const categiria = document.createElement("p");
-        categiria.textContent = `Categoria: ${blog.category}`;
-        const paragraph = document.createElement("p");
-        paragraph.textContent = blog.content;
-        blogContent.appendChild(user);
-        blogContent.appendChild(categiria);
-        blogContent.appendChild(paragraph);
-        // Verificar si socialMedia contiene algo
-        if (blog.socialMedia) {
-          const socialMediaParagraph = document.createElement("p");
-          socialMediaParagraph.textContent = `Redes sociales: ${blog.socialMedia}`; // Agregar contenido de redes sociales
-          blogContent.appendChild(socialMediaParagraph); // Añadir debajo del contenido
-        }
-      }
-    });
-  </script>
-</head>
-
-<video autoplay muted loop id="background-video">
-  <source src="/assets/fondo4.mp4" type="video/mp4" />
-  Tu navegador no soporta el formato de video.
-</video>
-
-<div class="blog-container">
-  <article class="blog-page">
-    <h1 id="blog-title"></h1>
-    <img id="blog-image" src="" alt="" />
-    <div id="blog-content"></div>
-  </article>
-</div>
-
-<style>
-  /* Fondo de video */
-  #background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-
-  /* Contenedor principal para el blog */
-  .blog-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 40px;
-  }
-
-  .blog-page {
-    background: rgba(255, 255, 255, 0.685);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 100%;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 36px;
-    color: #05407a;
-    margin-bottom: 15px;
-  }
-
-  #blog-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-
-  #blog-content {
-    font-size: 18px;
-    color: #34495e;
-    text-align: justify;
-    line-height: 1.6;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: 100%;
-  }
-</style>
+    <script src="../scripts/blog.ts"></script>
+  </body>
+</html>

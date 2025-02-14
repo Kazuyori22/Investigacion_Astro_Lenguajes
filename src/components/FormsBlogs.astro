@@ -71,10 +71,16 @@
   Blog publicado exitosamente!
 </div>
 
+<!-- Mensaje de fallo -->
+<div id="warningMessage" class="warning-message">
+  No has iniciado sesión
+</div>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("blogForm") as HTMLFormElement;
     const confirmationMessage = document.getElementById(  "confirmationMessage") as HTMLDivElement;
+    const warningMessage = document.getElementById(  "warningMessage") as HTMLDivElement;
 
     form.addEventListener("submit", (event) => { event.preventDefault();
 
@@ -96,6 +102,14 @@
         const socialMedia = socialMediaElement ? socialMediaElement.value.trim() : "";
         const imageUrl = imageSelectElement.getAttribute("data-image") || "";
         const userString = sessionStorage.getItem("usuario");
+
+        if (!userString) {
+          warningMessage.style.display = "block";
+          setTimeout(() => {
+              confirmationMessage.style.display = "none";
+          }, 3000);
+        }
+        
         const user = userString ? JSON.parse(userString) : null; 
         const id = "";
         const blog = {
@@ -246,6 +260,20 @@
     font-weight: bold;
     animation: fadeIn 0.3s ease-in-out;
   }
+
+  .warning-message {
+    display: none;
+    text-align: center;
+    background: red;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
 
   @keyframes fadeIn {
     from {
