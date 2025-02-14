@@ -40,13 +40,19 @@
     </div>
   </div>
 
-  <button type="submit">Publicar Blog</button>
+  <button type="submit" id="publicar">Publicar Blog</button>
 </form>
+<!-- Mensaje de confirmación -->
+<div id="confirmationMessage" class="confirmation-message">
+  Blog publicado exitosamente!
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("blogForm") as HTMLFormElement;
-
+    const confirmationMessage = document.getElementById(
+      "confirmationMessage"
+    ) as HTMLDivElement;
     if (form) {
       form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -87,6 +93,13 @@
           document.dispatchEvent(
             new CustomEvent("blogAdded", { detail: blog })
           );
+          // Mostrar mensaje de confirmación
+          confirmationMessage.style.display = "block";
+
+          // Ocultar mensaje después de 3 segundos
+          setTimeout(() => {
+            confirmationMessage.style.display = "none";
+          }, 3000);
         } else {
           console.error("Formulario o elementos necesarios no encontrados.");
         }
@@ -118,79 +131,141 @@
 </script>
 
 <style>
+  /* Contenedor principal del formulario */
   .blog-form {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Aumenté el ancho */
+    width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.178);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
   }
 
+  /* Inputs y textarea */
   .blog-form input,
-  .blog-form textarea,
-  .blog-form select {
+  .blog-form textarea {
     width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 14px;
+    border: 2px solid #cccccc60;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
   }
 
-  .blog-form button {
+  /* Botón de publicar */
+  #publicar {
     width: 100%;
-    padding: 10px;
-    background-color: rgb(161, 119, 240);
+    padding: 14px;
+    background: linear-gradient(135deg, rgb(161, 119, 240), rgb(116, 90, 200));
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
   }
 
+  .blog-form button:hover {
+    background: linear-gradient(135deg, rgb(140, 95, 230), rgb(100, 75, 180));
+  }
+
+  /* Sección de selección de imagen */
   .image-selection {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
   }
 
+  .image-selection label {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+  }
+
+  /* Contenedor de los botones de imagen */
   .image-buttons {
     display: flex;
     gap: 10px;
-    margin-bottom: 10px;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que las imágenes se ajusten en pantallas pequeñas */
   }
 
+  /* Botón de selección de imagen */
   .image-button {
+    width: 100px; /* Tamaño cuadrado */
+    height: 100px;
     padding: 0;
+    border: none;
     background: none;
     cursor: pointer;
-    border-radius: 5px;
-    width: 60px; /* Ajuste el tamaño del botón */
-    height: 60px;
-    border: none;
+    border-radius: 0;
     outline: none;
+    transition: transform 0.2s ease-in-out;
   }
 
+  /* Imagen dentro del botón */
   .image-option {
     display: block;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    border-radius: 5px;
+    border-radius: 0; /* Elimina cualquier borde */
   }
 
+  /* Resaltar imagen seleccionada */
   .image-button.selected {
-    border: none;
+    transform: scale(1.1);
+    outline: 3px solid rgba(255, 255, 255, 0.8);
   }
-
-  .image-preview img {
-    width: 100%;
-    height: auto;
-  }
-  /* Estilo para el label */
-  .image-selection label {
-    display: block;
+  /* Mensaje de confirmación */
+  .confirmation-message {
+    display: none;
+    text-align: center;
+    background: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 8px;
-    color: #333;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .blog-form {
+      width: 95%;
+      padding: 20px;
+    }
+
+    .image-button {
+      width: 80px;
+      height: 80px;
+    }
+
+    .blog-form input,
+    .blog-form textarea {
+      font-size: 14px;
+    }
+
+    .blog-form button {
+      font-size: 14px;
+      padding: 12px;
+    }
   }
 </style>
