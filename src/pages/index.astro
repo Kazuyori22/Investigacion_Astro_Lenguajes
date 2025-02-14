@@ -68,7 +68,7 @@ import BlogLayout from "../layouts/BlogLayout.astro";
       <BlogLayout />
       <!-- Video de fondo -->
       <video autoplay muted loop id="background-video">
-        <source src="/assets/fondo.mp4" type="video/mp4" />
+        <source src="/assets/fondo5.mp4" type="video/mp4" />
         Tu navegador no soporta el formato de video.
       </video>
 
@@ -90,88 +90,5 @@ import BlogLayout from "../layouts/BlogLayout.astro";
     z-index: -1; /* Asegura que el video esté detrás del contenido */
   }
 
-  /* Fondo oscuro para el contenido */
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", sans-serif;
-    color: white;
-  }
-
-  /* Contenedor principal */
-  .blogs-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  /* Estilo de las tarjetas */
-  .blog-card {
-    position: relative;
-    height: 350px;
-    background-size: cover !important;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transition:
-      transform 0.3s ease-in-out,
-      box-shadow 0.3s ease-in-out;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-  }
-
-  /* Efecto hover en las tarjetas */
-  .blog-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
-  }
-
-  /* Overlay con degradado */
-  .blog-card .overlay {
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
-    width: 100%;
-    backdrop-filter: blur(5px);
-  }
-
-  /* Estilo del título del blog */
-  .blog-card h3 {
-    margin: 10px 0 5px;
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
-
-  /* Estilo de etiquetas */
-  .blog-card .tags {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-  }
-
-  .blog-card .tag {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 0.8rem;
-    padding: 4px 8px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-
-  /* Colores para etiquetas según categoría */
-  .blog-card .tag.aerospace {
-    background: #ff3b3b;
-  }
-  .blog-card .tag.cosmology {
-    background: #ff8800;
-  }
-  .blog-card .tag.javascript {
-    background: #ffdd00;
-  }
+ 
 </style>

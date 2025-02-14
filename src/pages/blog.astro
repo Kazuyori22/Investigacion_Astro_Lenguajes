@@ -23,34 +23,81 @@ const title = url.searchParams.get("title");
       const blogContent = document.getElementById("blog-content");
 
       if (!blog) {
-        if (blogContent) blogContent.innerHTML = "<h2>Blog no encontrado</h2>";
+        if (blogContent) {
+          const notFoundMessage = document.createElement("h2");
+          notFoundMessage.textContent = "Blog no encontrado";
+          blogContent.appendChild(notFoundMessage);
+        }
         return;
       }
 
-      if (blogTitle) blogTitle.innerText = blog.title;
+      if (blogTitle) blogTitle.textContent = blog.title;
       if (blogImage && blog.image)
         blogImage.setAttribute("src", `/assets/${blog.image}`);
-      if (blogContent) blogContent.innerHTML = `<p>${blog.content}</p>`;
+      if (blogContent) {
+        blogContent.innerHTML = ""; // Limpiar contenido previo
+        const paragraph = document.createElement("p");
+        paragraph.textContent = blog.content;
+        blogContent.appendChild(paragraph);
+      }
     });
   </script>
 </head>
 
-<article class="blog-page">
-  <h1 id="blog-title"></h1>
-  <img id="blog-image" src="" alt="" width="100" height="100" />
-  <div id="blog-content"></div>
-</article>
+<video autoplay muted loop id="background-video">
+  <source src="/assets/fondo5.mp4" type="video/mp4" />
+  Tu navegador no soporta el formato de video.
+</video>
+
+<div class="blog-container">
+  <article class="blog-page">
+    <h1 id="blog-title"></h1>
+    <img id="blog-image" src="" alt="" />
+    <div id="blog-content"></div>
+  </article>
+</div>
 
 <style>
-  .blog-page {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+  /* Fondo de video */
+  #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
 
+  /* Contenedor principal para el blog */
+  .blog-container {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgba(
+      255,
+      255,
+      255,
+      0.445
+    ); /* Oscurece el fondo para mejorar legibilidad */
+    padding: 20px;
+    /* border-radius: 10%; */
+  }
+  h1 {
+    font-size: 40px;
+    color: #05407a; /* Color del título */
+    margin-bottom: 10px;
+  }
+
+  #blog-content {
+    font-size: 40px;
+    color: #34495e; /* Color del contenido */
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   img {
     width: 100%;
-    border-radius: 10px;
+     margin-top: 10px;
     margin-bottom: 20px;
   }
 </style>
