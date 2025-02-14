@@ -2,6 +2,8 @@
 import BlogLayout from "../layouts/BlogLayout.astro";
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
+import "../styles/backgroundVideo.css";
+import "../styles/index.css";
 ---
 
 <!doctype html>
@@ -37,24 +39,3 @@ import Footer from "../components/Footer.astro"
     </Footer>
   </body>
 </html>
-<style>
-    /* Fondo de video */
-    #background-video {
-        position: fixed; /* Fija el video en el fondo */
-        top: 0;
-        left: 0;
-        width: 100%; /* Ocupa todo el ancho */
-        height: 100%; /* Ocupa todo el alto */
-        object-fit: cover; /* Asegura que cubra toda la pantalla sin distorsión */
-        z-index: -1; /* Asegura que el video esté detrás del contenido */
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        background: linear-gradient(135deg, #1a2a6c, #3e5fb2, #7273cb);
-        color: white;
-    }
-</style>

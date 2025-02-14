@@ -64,6 +64,10 @@
   </div>
 
   <button type="submit" id="publicar">Publicar Blog</button>
+  <div id="volverFeed">
+    <a href="./blogs" class="btn-redireccionar">Volver al feed</a>
+  </div>
+  
 </form>
 
 <!-- Mensaje de confirmación -->
@@ -73,6 +77,9 @@
 
 <!-- Mensaje de fallo -->
 <div id="warningMessage" class="warning-message">
+  <div>
+    <a href="./login" class="btn-redireccionar">Iniciar Sesión</a>
+  </div>
   No has iniciado sesión
 </div>
 
@@ -273,8 +280,39 @@
     font-weight: bold;
     animation: fadeIn 0.3s ease-in-out;
   }
-  
 
+  /* Contenedor principal para centrar el contenido */
+#volverFeed {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  height: 10vh;           /* Ocupa el 100% de la altura de la ventana */
+}
+
+  /* Estilo del botón */
+.btn-redireccionar {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #007BFF;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+.btn-redireccionar:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al presionar el botón */
+.btn-redireccionar:active {
+  background-color: #003f73;
+}
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
