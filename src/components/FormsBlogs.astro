@@ -1,10 +1,33 @@
+---
+
+---
+
 <form class="blog-form" id="blogForm">
   <input type="text" id="title" placeholder="Titulo del blog" required />
   <textarea id="content" placeholder="Contenido del blog" rows="4" required
   ></textarea>
 
-  <!-- Sección de selección de imagen -->
+  <!-- Selección de categoría -->
+  <div class="category-selection">
+    <label for="category">Selecciona una categoria:</label>
+    <select id="category" required>
+      <option value="" disabled selected>Elige una categoria</option>
+      <option value="Tecnologia">Tecnologia</option>
+      <option value="Salud">Salud</option>
+      <option value="Deportes">Deportes</option>
+      <option value="Viajes">Viajes</option>
+      <option value="Entretenimiento">Entretenimiento</option>
+    </select>
+  </div>
 
+  <!-- Campo opcional para redes sociales -->
+  <input
+    type="text"
+    id="socialMedia"
+    placeholder="Enlace a redes sociales (opcional)"
+  />
+
+  <!-- Sección de selección de imagen -->
   <div class="image-selection">
     <label for="imageSelect">Selecciona una imagen:</label>
     <div class="image-buttons">
@@ -42,6 +65,7 @@
 
   <button type="submit" id="publicar">Publicar Blog</button>
 </form>
+
 <!-- Mensaje de confirmación -->
 <div id="confirmationMessage" class="confirmation-message">
   Blog publicado exitosamente!
@@ -50,75 +74,68 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("blogForm") as HTMLFormElement;
-    const confirmationMessage = document.getElementById(
-      "confirmationMessage"
-    ) as HTMLDivElement;
-    if (form) {
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
+    const confirmationMessage = document.getElementById(  "confirmationMessage") as HTMLDivElement;
 
-        const titleElement = document.getElementById(
-          "title"
-        ) as HTMLInputElement | null;
-        const contentElement = document.getElementById(
-          "content"
-        ) as HTMLTextAreaElement | null;
-        const imageSelectElement = document.querySelector(
-          ".image-button.selected"
-        ) as HTMLElement | null;
+    form.addEventListener("submit", (event) => { event.preventDefault();
 
-        if (titleElement && contentElement && imageSelectElement) {
-          const title = titleElement.value;
-          const content = contentElement.value;
-          const imageUrl = imageSelectElement.getAttribute("data-image") || "";
+      const titleElement = document.getElementById("title") as HTMLInputElement | null;
+      const contentElement = document.getElementById("content") as HTMLTextAreaElement | null;
+      const categoryElement = document.getElementById( "category") as HTMLInputElement | null;
+      const socialMediaElement = document.getElementById( "socialMedia") as HTMLInputElement | null;
+      const imageSelectElement = document.querySelector( ".image-button.selected") as HTMLElement | null;
 
-          const blog = {
-            title,
-            content,
-            date: new Date().toISOString(),
-            image: imageUrl,
-          };
+      if (
+        titleElement &&
+        contentElement &&
+        categoryElement &&
+        imageSelectElement
+      ) {
+        const title = titleElement.value;
+        const content = contentElement.value;
+        const category = categoryElement.value;
+        const socialMedia = socialMediaElement ? socialMediaElement.value.trim() : "";
+        const imageUrl = imageSelectElement.getAttribute("data-image") || "";
+        const userString = sessionStorage.getItem("usuario");
+        const user = userString ? JSON.parse(userString) : null; 
+        const id = "";
+        const blog = {
+          id,
+          user: user.nombre,
+          title,
+          content,
+          category,
+          socialMedia: socialMedia || null, // Guardar null si no se ingresa nada
+          date: new Date().toISOString(),
+          image: imageUrl,
+        };
 
-          // Recuperar blogs existentes o inicializar un array vacío
-          const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
-          blogs.push(blog);
+        //agregar el blog y guartdarlo en el localStorage
+        const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+        blog.id= ""+ blogs.length ;
+        blogs.push(blog);
+        localStorage.setItem("blogs", JSON.stringify(blogs));
 
-          // Guardar blogs actualizados en localStorage
-          localStorage.setItem("blogs", JSON.stringify(blogs));
+        form.reset();
+        document.dispatchEvent(new CustomEvent("blogAdded", { detail: blog }));
 
-          // Limpiar el formulario
-          form.reset();
-
-          // Emitir evento para actualizar otros componentes
-          document.dispatchEvent(
-            new CustomEvent("blogAdded", { detail: blog })
-          );
-          // Mostrar mensaje de confirmación
-          confirmationMessage.style.display = "block";
-
-          // Ocultar mensaje después de 3 segundos
-          setTimeout(() => {
-            confirmationMessage.style.display = "none";
-          }, 3000);
-        } else {
-          console.error("Formulario o elementos necesarios no encontrados.");
-        }
-      });
-    } else {
-      console.error("No se encontró el formulario con id 'blogForm'");
-    }
-
+        confirmationMessage.style.display = "block";
+        setTimeout(() => {
+          confirmationMessage.style.display = "none";
+        }, 3000);
+      } else {
+        console.error("Formulario o elementos necesarios no encontrados.");
+      }
+    });
+    //mostrar la imagen seleccionada
     const imageButtons = document.querySelectorAll(".image-button");
-    const previewImage = document.getElementById(
-      "previewImage"
-    ) as HTMLImageElement | null;
+    const previewImage = document.getElementById(  "previewImage") as HTMLImageElement | null;
 
     if (previewImage) {
       imageButtons.forEach((button) => {
-        button.addEventListener("click", (event) => {
+        button.addEventListener("click", () => {
           const selectedImage = button.getAttribute("data-image");
-          if (selectedImage && previewImage) {
-            previewImage.src = selectedImage;
+          if (selectedImage) {
+            previewImage.src = selectedImage; // Solo se ejecuta si previewImage no es null
           }
 
           // Resaltar el botón seleccionado
@@ -126,14 +143,15 @@
           button.classList.add("selected");
         });
       });
+    } else {
+      console.error("No se encontró el elemento con id 'previewImage'");
     }
   });
 </script>
 
 <style>
-  /* Contenedor principal del formulario */
   .blog-form {
-    max-width: 100%; /* Aumenté el ancho */
+    max-width: 100%;
     width: 800px;
     margin: 40px auto;
     padding: 30px;
@@ -143,9 +161,9 @@
     backdrop-filter: blur(5px);
   }
 
-  /* Inputs y textarea */
   .blog-form input,
-  .blog-form textarea {
+  .blog-form textarea,
+  .blog-form select {
     width: 100%;
     margin-bottom: 15px;
     padding: 14px;
@@ -155,7 +173,6 @@
     box-sizing: border-box;
   }
 
-  /* Botón de publicar */
   #publicar {
     width: 100%;
     padding: 14px;
@@ -172,13 +189,13 @@
     background: linear-gradient(135deg, rgb(140, 95, 230), rgb(100, 75, 180));
   }
 
-  /* Sección de selección de imagen */
   .image-selection {
     margin-bottom: 15px;
     text-align: center;
   }
 
-  .image-selection label {
+  .image-selection label,
+  .category-selection label {
     display: block;
     font-size: 16px;
     font-weight: bold;
@@ -186,43 +203,37 @@
     color: #ffffff;
   }
 
-  /* Contenedor de los botones de imagen */
   .image-buttons {
     display: flex;
     gap: 10px;
     justify-content: center;
-    flex-wrap: wrap; /* Permite que las imágenes se ajusten en pantallas pequeñas */
+    flex-wrap: wrap;
   }
 
-  /* Botón de selección de imagen */
   .image-button {
-    width: 100px; /* Tamaño cuadrado */
+    width: 100px;
     height: 100px;
     padding: 0;
     border: none;
     background: none;
     cursor: pointer;
-    border-radius: 0;
     outline: none;
     transition: transform 0.2s ease-in-out;
   }
 
-  /* Imagen dentro del botón */
   .image-option {
     display: block;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    border-radius: 0; /* Elimina cualquier borde */
   }
 
-  /* Resaltar imagen seleccionada */
   .image-button.selected {
     transform: scale(1.1);
     outline: 3px solid rgba(255, 255, 255, 0.8);
   }
-  /* Mensaje de confirmación */
+
   .confirmation-message {
     display: none;
     text-align: center;
@@ -246,7 +257,7 @@
       transform: translateY(0);
     }
   }
-  /* Responsivo */
+
   @media (max-width: 768px) {
     .blog-form {
       width: 95%;
@@ -259,7 +270,8 @@
     }
 
     .blog-form input,
-    .blog-form textarea {
+    .blog-form textarea,
+    .blog-form select {
       font-size: 14px;
     }
 

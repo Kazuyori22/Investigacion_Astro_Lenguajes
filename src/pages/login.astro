@@ -1,19 +1,58 @@
 ---
 ---
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>My SpaceBlog - Iniciar Sesión</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center; background: #2c3e50; color: white; }
-        .container { width: 300px; margin: auto; padding: 20px; background: rgba(0,0,0,0.7); margin-top: 100px; border-radius: 10px; }
-        input { width: 90%; padding: 10px; margin: 10px 0; border: none; border-radius: 5px; }
-        button { padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; transition: 0.3s; }
-        .btn-login { background: #3498db; color: white; }
-        .btn-back { background: #e74c3c; color: white; }
-        button:hover { opacity: 0.8; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; padding: 0; 
+            text-align: center; 
+            background: #2c3e50; 
+            color: white;
+        }
+        .container { 
+            width: 300px; 
+            margin: auto; 
+            padding: 20px; 
+            background: rgba(0,0,0,0.7); 
+            margin-top: 100px; 
+            border-radius: 10px; 
+        }
+        input { 
+            width: 90%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border: none; 
+            border-radius: 5px; 
+        }
+        button { 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 5px; 
+            transition: 0.3s; 
+        }
+        .btn-login { 
+            background: #4ae278; 
+            color: white; 
+        }
+        .btn-back { 
+            background: #e74c3c; 
+            color: white; 
+        }
+        .btn-register { 
+            background: #5797dc; 
+            color: white; 
+        }
+        button:hover { 
+            opacity: 0.8; 
+        }
     </style>
 </head>
 <body>
@@ -24,7 +63,11 @@
             <input type="password" placeholder="Contraseña" required>
             <button type="submit" class="btn-login">Ingresar</button>
         </form>
+        <div>
+            <a href="/register"><button class="btn-register">Registrarse</button></a>
+        </div>
         <a href="/"><button class="btn-back">Regresar a Inicio</button></a>
     </div>
+    <script src="/src/scripts/login"></script>
 </body>
 </html>

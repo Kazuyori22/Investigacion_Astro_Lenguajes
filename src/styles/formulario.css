@@ -1,0 +1,54 @@
+.titleText {
+    color: #fff;
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente oscuro */
+    border-radius: 15px; /* Bordes redondeados */
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para darle profundidad */
+    transform: translateY(20px); /* Hace que el contenido esté ligeramente hacia abajo al cargar */
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards; /* Animación de entrada */
+}
+
+.titleText h1 {
+    font-size: 3.5rem;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700; /* Negrita */
+    margin: 0;
+    letter-spacing: 3px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    color: #f39c12; /* Color dorado para el título */
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.titleText p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    color: #ecf0f1; /* Color gris claro para el subtítulo */
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

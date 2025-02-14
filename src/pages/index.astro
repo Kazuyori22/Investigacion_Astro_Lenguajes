@@ -1,6 +1,7 @@
 ---
-import FormsBlogs from "../components/FormsBlogs.astro";
 import BlogLayout from "../layouts/BlogLayout.astro";
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
 ---
 
 <!doctype html>
@@ -8,7 +9,7 @@ import BlogLayout from "../layouts/BlogLayout.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Blog - Landing Page</title>
+    <title>My SpaceBlog - Landing Page</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -51,11 +52,14 @@ import BlogLayout from "../layouts/BlogLayout.astro";
       }
     </style>
   </head>
+
   <body>
-    <header>Mi Blog</header>
+    <Header />
+
     <section class="hero">
       <h1>Bienvenido a Mi Blog</h1>
       <p>Explora contenido interesante y mantente informado.</p>
+
       <div class="buttons">
         <a href="/login"
           ><button class="btn btn-login">Iniciar Sesión</button></a
@@ -64,20 +68,20 @@ import BlogLayout from "../layouts/BlogLayout.astro";
           ><button class="btn btn-register">Registrarse</button></a
         >
       </div>
-      <FormsBlogs />
+
       <BlogLayout />
+
       <!-- Video de fondo -->
       <video autoplay muted loop id="background-video">
         <source src="/assets/fondo5.mp4" type="video/mp4" />
         Tu navegador no soporta el formato de video.
       </video>
 
-      <!-- El contenido del blog -->
-      <!-- <div class="blogs-container"> -->
-      <!-- Aquí iría el contenido de tus blogs -->
     </section>
+    <Footer />
   </body>
 </html>
+
 <style>
   /* Fondo de video */
   #background-video {
@@ -89,6 +93,4 @@ import BlogLayout from "../layouts/BlogLayout.astro";
     object-fit: cover; /* Asegura que cubra toda la pantalla sin distorsión */
     z-index: -1; /* Asegura que el video esté detrás del contenido */
   }
-
- 
 </style>

@@ -12,7 +12,7 @@
         container.innerHTML = blogs
           .map(
             (blog) => `
-             <a href="/blog?title=${encodeURIComponent(blog.title)}" class="blog-card"
+             <a href="/blog?id=${encodeURIComponent(blog.id)}" class="blog-card"
      style="
        background-image: url('${blog.image ? `/assets/${blog.image}` : ""}');
        position: relative;

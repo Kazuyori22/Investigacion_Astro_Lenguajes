@@ -1,0 +1,49 @@
+---
+import FormsBlogs from "../components/FormsBlogs.astro";
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import '../styles/formulario.css';
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My SpaceBlog - Crear Blog</title>
+  </head>
+
+  <body>
+    <Header></Header>
+
+    <section>
+        <div class="titleText">
+            <h1>Crear Blog</h1>
+            <p>¿En qué estás pensando?</p>
+        </div>
+      
+        <FormsBlogs />
+
+        <!-- Video de fondo -->
+        <video autoplay muted loop id="background-video">
+            <source src="/assets/fondo5.mp4" type="video/mp4" />
+            Tu navegador no soporta el formato de video.
+        </video> 
+    </section>
+
+    <Footer></Footer>
+  </body>
+</html>
+
+<style>
+  /* Fondo de video */
+  #background-video {
+    position: fixed; /* Fija el video en el fondo */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa todo el alto */
+    object-fit: cover; /* Asegura que cubra toda la pantalla sin distorsión */
+    z-index: -1; /* Asegura que el video esté detrás del contenido */
+  }
+</style>

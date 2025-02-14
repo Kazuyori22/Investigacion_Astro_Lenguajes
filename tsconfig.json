@@ -1,5 +1,10 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
+  "include": [
+    ".astro/types.d.ts",
+    "**/*",
+    "!src/components/BlogCard.astro",  // Excluir archivos que ya no existen
+    "!src/components/Welcome.astro"    // Excluir archivos que ya no existen
+  ],
   "exclude": ["dist"]
 }
