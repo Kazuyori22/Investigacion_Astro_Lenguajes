@@ -15,27 +15,26 @@ import "../styles/index.css";
   </head>
 
   <body>
-    <Header>
-      
-    </Header>
-    <section class="hero">
-      <h1>Blogs publicados</h1>
-      <div>
-        <a href="/formulario"
-          ><button class="btn btn-login">Crea tu blog</button></a
-        >
-      </div>
-     
-      <BlogLayout />
-      
-      <video autoplay muted loop id="background-video">
-        <source src="/assets/fondo5.mp4" type="video/mp4" />
-        Tu navegador no soporta el formato de video.
-      </video>
-
-    </section>
-    <Footer>
-      
-    </Footer>
+    <Header />
+    <main>
+      <section class="hero">
+        <h1>Blogs publicados</h1>
+        <div>
+          <a href="/formulario"
+            ><button class="btn btn-login">Crea tu blog</button></a
+          >
+        </div>
+       
+        <BlogLayout />
+        
+        <video autoplay muted loop id="background-video">
+          <source src="/assets/fondo5.mp4" type="video/mp4" />
+          Tu navegador no soporta el formato de video.
+        </video>
+  
+      </section>
+    </main>
+  
+    <Footer />
   </body>
 </html>

@@ -1,69 +1,75 @@
 ---
-title: "Sobre Nosotros - Comunidad";
-layout: "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/index.css";
 import "../styles/backgroundVideo.css";
 ---
 
-<Header />
-<html>
+
+<!doctype html>
+<html lang="es">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sobre la Comunidad de My SpaceBlogs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </head>
 
   <body>
+    <Header />
+
     <main>
-      <section class="hero">
-        <h1 class="text-4xl font-bold text-gray-800 mb-6">
-          Sobre la Comunidad de My SpaceBlogs
-        </h1>
-        <p class="text-lg text-gray-600 mb-4">
-          En My SpaceBlogs, creemos en el poder de la comunidad. Nuestra
-          plataforma está diseñada para conectar a escritores, lectores y
-          entusiastas de diversos temas, ofreciendo un lugar donde cada voz
-          pueda ser escuchada y apreciada.
-        </p>
-        <p class="text-lg text-gray-600 mb-4">
-          Ya sea que seas un escritor experimentado o alguien que quiera
-          compartir su perspectiva única, aquí encontrarás un espacio inclusivo,
-          colaborativo y respetuoso donde puedes expresarte y aprender de los
-          demás.
-        </p>
-        <p class="text-lg text-gray-600 mb-4">
-          La comunidad de My SpaceBlogs abarca una amplia gama de intereses:
-          desde tecnología, arte, ciencia, hasta estilo de vida y más. Todos
-          tenemos algo valioso que aportar y la diversidad de ideas es lo que
-          hace que esta comunidad sea única.
-        </p>
-        <div class="mt-6">
-          <h2 class="text-2xl font-semibold text-gray-700">¿Por qué unirse?</h2>
-          <p class="text-gray-600 mt-2">
-            Unirte a nuestra comunidad te brinda la oportunidad de compartir tus
-            pensamientos, mejorar tus habilidades de escritura, y conectar con
-            personas que comparten tus pasiones. No solo publicamos blogs, sino
-            que también fomentamos el intercambio de ideas a través de
-            comentarios, discusiones y colaboraciones.
-          </p>
+      <section class="hero container py-5">
+        <div class="row justify-content-center text-center text-light">
+          <!-- Titulo -->
+          <div class="col-12">
+            <h1 class="display-4 text-light mb-4">Sobre la Comunidad de My SpaceBlogs</h1>
+          </div>
+    
+          <!-- Descripcion -->
+          <div class="col-12 col-md-10 col-lg-8">
+            <p class="lead text-light mb-4">
+              En My SpaceBlogs, creemos en el poder de la comunidad. Nuestra plataforma está diseñada para conectar a escritores, lectores y entusiastas de diversos temas, ofreciendo un lugar donde cada voz pueda ser escuchada y apreciada.
+            </p>
+            <p class="lead text-light mb-4">
+              Ya sea que seas un escritor experimentado o alguien que quiera compartir su perspectiva única, aquí encontrarás un espacio inclusivo, colaborativo y respetuoso donde puedes expresarte y aprender de los demás.
+            </p>
+            <p class="lead text-light mb-4">
+              La comunidad de My SpaceBlogs abarca una amplia gama de intereses: desde tecnología, arte, ciencia, hasta estilo de vida y más. Todos tenemos algo valioso que aportar y la diversidad de ideas es lo que hace que esta comunidad sea única.
+            </p>
+          </div>
+    
+          <!-- Sección "¿Por qué unirse?" -->
+          <div class="col-12 mt-5">
+            <h2 class="h3 text-warning">¿Por qué unirse?</h2>
+            <p class="text-light">
+              Unirte a nuestra comunidad te brinda la oportunidad de compartir tus pensamientos, mejorar tus habilidades de escritura, y conectar con personas que comparten tus pasiones. No solo publicamos blogs, sino que también fomentamos el intercambio de ideas a través de comentarios, discusiones y colaboraciones.
+            </p>
+          </div>
+    
+          <!-- Sección "Cultura de la Comunidad" -->
+          <div class="col-12 mt-5">
+            <h2 class="h3 text-warning">Cultura de la Comunidad</h2>
+            <p class="text-light">
+              Nuestra cultura está basada en el respeto, la empatía y el apoyo mutuo. Fomentamos un ambiente positivo donde todos los miembros puedan sentirse cómodos para compartir y recibir retroalimentación constructiva.
+            </p>
+          </div>
+    
+          <!-- Video de fondo -->
+          <div class="col-12 mt-5">
+            <div class="">
+              <video autoplay muted loop class="w-100 h-100" id="background-video">
+                <source src="/assets/fondo4.mp4" type="video/mp4" />
+                Tu navegador no soporta el formato de video.
+              </video>
+            </div>
+          </div>
         </div>
-        <div class="mt-6">
-          <h2 class="text-2xl font-semibold text-gray-700">
-            Cultura de la Comunidad
-          </h2>
-          <p class="text-gray-600 mt-2">
-            Nuestra cultura está basada en el respeto, la empatía y el apoyo
-            mutuo. Fomentamos un ambiente positivo donde todos los miembros
-            puedan sentirse cómodos para compartir y recibir retroalimentación
-            constructiva.
-          </p>
-        </div>
-        <video autoplay muted loop id="background-video">
-          <source src="/assets/fondo4.mp4" type="video/mp4" />
-          Tu navegador no soporta el formato de video.
-        </video>
       </section>
+      
     </main>
+    
     <Footer />
   </body>
 </html>
