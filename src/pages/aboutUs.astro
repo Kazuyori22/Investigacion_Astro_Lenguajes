@@ -1,0 +1,71 @@
+---
+title: "Sobre Nosotros";
+layout: "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Header />
+<html>
+  <head>
+    <title>Sobre Nosotros</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f28c;
+        color: white;
+        padding: 0px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <section >
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">
+          Sobre My SpaceBlogs
+        </h1>
+        <p class="text-lg text-gray-600 mb-4">
+          My SpaceBlogs nacio con la mision de ofrecer un espacio donde
+          escritores y entusiastas puedan compartir sus ideas, historias y
+          conocimientos.
+        </p>
+        <p class="text-lg text-gray-600 mb-4">
+          Creemos en la creatividad, la libre expresion y en la importancia de
+          construir una comunidad basada en el intercambio de ideas. Aqui
+          encontraras blogs sobre diversos temas, desde tecnologia hasta arte y
+          estilo de vida.
+        </p>
+        <p class="text-lg text-gray-600 mb-4">
+          Nuestro objetivo es seguir creciendo como una plataforma accesible y
+          atractiva para todos los apasionados de la escritura y la lectura.
+        </p>
+        <div class="mt-6">
+          <h2 class="text-2xl font-semibold text-gray-700">Nuestro Equipo</h2>
+          <p class="text-gray-600 mt-2">
+            Somos un grupo de apasionados por la tecnologia y la comunicacion
+            que trabajan para mejorar constantemente My SpaceBlogs.
+          </p>
+        </div>
+        <video autoplay muted loop id="background-video">
+          <source src="/assets/fondo5.mp4" type="video/mp4" />
+          Tu navegador no soporta el formato de video.
+        </video>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+</style>
