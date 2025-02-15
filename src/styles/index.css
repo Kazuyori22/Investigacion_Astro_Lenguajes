@@ -37,3 +37,45 @@ body {
 .btn:hover {
     opacity: 0.8;
 }
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Asegura que las columnas tengan la misma altura */
+}
+
+.info-box {
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 100%;
+    min-height: 300px; /* Altura mínima para todas las secciones */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que el contenido esté bien distribuido */
+}
+
+.benefits-box {
+    background: rgba(200, 200, 200, 0.5); /* Gris translúcido */
+}
+
+.testimonial-box {
+    background: rgba(200, 200, 200, 0.5); /* Gris translúcido */
+    color: #fdfefe;
+}
+
+.register-box {
+    background: rgba(0, 0, 0, 0.8); /* Fondo negro con opacidad */
+    color: #fff;
+}
+
+.btn-register1 {
+    background-color: #007bff; /* Ajusta el color del botón */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+}
