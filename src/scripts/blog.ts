@@ -34,10 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
       blogContent.innerHTML = ""; // Limpiar contenido previo
       const user = document.createElement("p");
       user.textContent = `Usuario: ${blog.user}`;
+      const date = document.createElement("p");
+      const formattedDate = new Date(blog.date).toISOString().split('T')[0];
+      date.textContent = `Fecha: ${formattedDate}`;
       const categiria = document.createElement("p");
       categiria.textContent = `Categoria: ${blog.category}`;
       const paragraph = document.createElement("p");
       paragraph.textContent = blog.content;
+      blogContent.appendChild(date);
       blogContent.appendChild(user);
       blogContent.appendChild(categiria);
       blogContent.appendChild(paragraph);

@@ -17,11 +17,21 @@
     text-align: center;
   }
 
-  h1 {
-    font-size: 36px;
-    color: #05407a;
-    margin-bottom: 15px;
-  }
+ h1 {
+   font-size: 36px;
+   color: #05407a;
+   margin-bottom: 15px;
+   word-wrap: break-word;
+   /* Evitar que el texto se desborde */
+   overflow: hidden;
+   /* Ocultar el desbordamiento */
+   text-overflow: ellipsis;
+   /* Añadir "..." si el texto es demasiado largo */
+   max-width: 100%;
+   /* Ajustar al contenedor */
+   white-space: normal;
+   /* Permitir que el texto se ajuste en varias líneas si es necesario */
+ }
 
   #blog-image {
     width: 100%;
