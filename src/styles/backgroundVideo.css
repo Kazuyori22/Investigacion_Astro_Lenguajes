@@ -6,5 +6,4 @@
   height: 100%; /* Ocupa todo el alto */
   object-fit: cover; /* Asegura que cubra toda la pantalla sin distorsión */
   z-index: -1; /* Asegura que el video esté detrás del contenido */
-  opacity: 0.8; /* Controla la opacidad, puedes ajustarlo entre 0 (totalmente transparente) y 1 (totalmente opaco) */
-}
+ }
