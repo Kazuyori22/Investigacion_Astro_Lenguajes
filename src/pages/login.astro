@@ -1,4 +1,5 @@
 ---
+import LoginForm from '../components/LoginForm.astro'; // Importar el componente
 import "../styles/backgroundVideo.css";
 import "../styles/login.css";
 ---
@@ -13,18 +14,16 @@ import "../styles/login.css";
   <body>
     <div class="container">
       <h2>Iniciar Sesión</h2>
-      <form>
-        <input type="email" placeholder="Correo Electrónico" required />
-        <input type="password" placeholder="Contraseña" required />
-        <button type="submit" class="btn-login">Ingresar</button>
-      </form>
+      
+      <LoginForm client:load formId="loginForm" />
+      
       <div>
-        <a href="/register"><button class="btn-register">Registrarse</button></a
-        >
+        <a href="/register"><button class="btn-register">Registrarse</button></a>
       </div>
+
       <a href="/"><button class="btn-back">Regresar a Inicio</button></a>
     </div>
-    <script src="/src/scripts/login"></script>
+
     <!-- Video de fondo -->
     <video autoplay muted loop id="background-video">
       <source src="/assets/fondo2.mp4" type="video/mp4" />

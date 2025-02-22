@@ -1,4 +1,5 @@
 ---
+import RegisterForm from '../components/RegisterForm.astro'; // Importar el componente
 import "../styles/backgroundVideo.css";
 import "../styles/register.css";
 ---
@@ -13,20 +14,12 @@ import "../styles/register.css";
   <body>
     <div class="container">
       <h2>Registrarse</h2>
-      <form>
-        <input type="text" placeholder="Nombre Completo" required />
-        <input type="email" placeholder="Correo Electrónico" required />
-        <input type="tel" placeholder="Teléfono" required />
-        <input type="password" placeholder="Contraseña" required />
-        <input type="password" placeholder="Confirmar Contraseña" required />
-        <label for="date">Fecha de nacimiento</label>
-        <input type="date" required />
-        <button type="submit" class="btn-register">Registrarse</button>
-      </form>
+      
+      <!-- Aquí se inserta el componente RegisterForm -->
+      <RegisterForm client:load formId="registerForm" />
+      
       <a href="/"><button class="btn-back">Regresar a Inicio</button></a>
     </div>
-
-    <script src="/src/scripts/register"></script>
 
     <!-- Video de fondo -->
     <video autoplay muted loop id="background-video">

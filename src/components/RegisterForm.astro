@@ -1,4 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
+---
+const { formId } = Astro.props; // Opcional: puedes pasar parámetros si es necesario
+---
+
+<form id={formId}>
+  <input type="text" placeholder="Nombre Completo" required />
+  <input type="email" placeholder="Correo Electrónico" required />
+  <input type="tel" placeholder="Teléfono" required />
+  <input type="password" placeholder="Contraseña" required />
+  <input type="password" placeholder="Confirmar Contraseña" required />
+  <label for="date">Fecha de nacimiento</label>
+  <input type="date" required />
+  <button type="submit" class="btn-register">Registrarse</button>
+</form>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
 
     form.addEventListener("submit", function (event) {
@@ -38,9 +54,9 @@ document.addEventListener("DOMContentLoaded", function () {
         usuarios.push(usuario);
         localStorage.setItem("usuarios", JSON.stringify(usuarios));
         console.log("Usuarios guardados en localStorage:", usuarios);
-
-
-         window.location.href = "/gracias";
+        window.location.href = "/gracias";
         form.reset(); // Limpiar el formulario
     });
 });
+
+</script>
